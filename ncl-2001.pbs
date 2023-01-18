@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#PBS -P up6
+#PBS -q normal
+#PBS -l walltime=06:00:00
+#PBS -l jobfs=190GB
+#PBS -l mem=128GB
+#PBS -l ncpus=48
+#PBS -l storage=gdata/up6+gdata/hh5+gdata/cj37
+#PBS -m a
+#PBS -M g.surendran@unsw.edu.au
+#PBS -N run_ncl
+#PBS -l wd
+
+#####PBS -j oe
+#####PBS -l wd
+
+
+module load ncl/6.6.2
+module load esmf/8.0.1
+
+for f in /g/data/up6/gs5098/cdo/CAPE/2001-*.ncl
+do
+ncl $f
+done
